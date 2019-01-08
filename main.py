@@ -1,6 +1,6 @@
 #!usr/binpython3
 #-*-coding:UTF-8-*-
-
+import os
 import models.FPGrowth as FP
 import models.Apriori as A
 
@@ -22,3 +22,10 @@ def run_FG_Growth(file,times):
     FP.mineTree(myFPtree, myHeaderTab, times, set([]), myFreqList)
     return myFreqList
 
+if __name__=='__main__':
+    datafile=os.path.join(os.getcwd(),'data','newsread.dat')
+    print(datafile)
+    A_result=run_Apriori(datafile,0.17)
+    FP_result=run_FG_Growth(datafile,100000)
+    print(A_result)
+    print(FP_result)

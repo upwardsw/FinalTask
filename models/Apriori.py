@@ -17,7 +17,7 @@ def apriori(D, minSup):
             else:
                 C1[I] = 1
 
-    print(C1)
+    # print(C1)
     _keys1 = C1.keys()
 
     keys1 = []

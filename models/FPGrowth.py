@@ -18,7 +18,7 @@ class treeNode:
 
     # 将树以文本形式显示
     def disp(self, ind=1):
-        print('  ' * ind, self.name, ' ', self.count)
+        # print('  ' * ind, self.name, ' ', self.count)
         for child in self.children.values():
             child.disp(ind + 1)
 
@@ -130,7 +130,7 @@ def mineTree(inTree, headerTable, minSup, preFix, freqItemList):
         # 将创建的条件基作为新的数据集添加到fp-tree
         # print ('head from conditional tree: ', myHead)
         if myHead != None:  # 3. 递归
-            print('conditional tree for: ', newFreqSet)
+            # print('conditional tree for: ', newFreqSet)
             myCondTree.disp(1)
             mineTree(myCondTree, myHead, minSup, newFreqSet, freqItemList)
 
