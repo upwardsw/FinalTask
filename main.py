@@ -23,9 +23,9 @@ def run_FG_Growth(file,times):
     return myFreqList
 
 if __name__=='__main__':
-    datafile=os.path.join(os.getcwd(),'data','newsread.dat')
-    print(datafile)
-    A_result=run_Apriori(datafile,0.17)
-    FP_result=run_FG_Growth(datafile,100000)
-    print(A_result)
-    print(FP_result)
+    file_path=os.path.join(os.getcwd(),'data','newsread.dat')
+    print("Now reading file:{0}".format(file_path))
+    A_result=run_Apriori(file_path,0.17)
+    print("Apriori's result:{0}".format(A_result))
+    FP_result=run_FG_Growth(file_path,100000)
+    print("FP-Growth's result:{0}".format(FP_result))
