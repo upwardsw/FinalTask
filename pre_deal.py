@@ -2,7 +2,7 @@ import os
 from openpyxl import *
 
 
-def pre_deal(file_name,sheet_name, column1, column2, out_file_name):
+def pre_deal(file_name, sheet_name, column1, column2, out_file_name):
     # 导入文件的路径
     file_path = os.path.join(os.getcwd(), 'data')
     # 加载文件并读取工作表
@@ -12,8 +12,8 @@ def pre_deal(file_name,sheet_name, column1, column2, out_file_name):
 
     print("开始读取数据")
     result = []  # 结果列表
-    B = []       # column1列表
-    G = []       # column2列表
+    B = []  # column1列表
+    G = []  # column2列表
     # 读取column1 的数据
     for i in workbench[column1]:
         B.append(i.value)
@@ -44,7 +44,8 @@ def pre_deal(file_name,sheet_name, column1, column2, out_file_name):
 
     #
     print("开始存储数据")
-    with open(out_file_name, 'a') as f:
+    outfile=os.path.join(os.getcwd(),'data',out_file_name)
+    with open(outfile, 'a') as f:
         for n in data.keys():
             string = " ".join(str(s) for s in data[n])
             f.writelines(string + '\n')
@@ -52,16 +53,17 @@ def pre_deal(file_name,sheet_name, column1, column2, out_file_name):
     print('转换数据成功')
 
 
-if __name__=='__main__':
-    filename='onlineretail.xlsx'
-    sheetname='Sheet1'
-    column1='B'
-    column2='G'
-    outfilename='online.dat'
-    print("resource file:{0} sheet:{1} column:{2} {3}".format(filename,sheetname,column1,column2))
-    print("out file:{0}".format(outfilename))
+if __name__ == '__main__':
+    filename = 'onlineretail.xlsx'
+    sheetname = 'Sheet1'
+    column1 = 'B'
+    column2 = 'G'
+    outfilename = 'online.dat'
+    print("源目标 文件名:{0} 工作表:{1} 列名:{2} {3}".format(filename, sheetname, column1, column2))
+    print("输出 文件名:{0}".format(outfilename))
     # print("input 'Y' to continue:")
-    i=input("input 'Y' to continue,'n' to exit:")
-    if i=='Y' or i=='y':
-        pre_deal(filename,sheetname,column1,column2,outfilename)
-    else:print("exiting")
+    i = input("输入 Y 继续:")
+    if i == 'Y' or i == 'y':
+        pre_deal(filename, sheetname, column1, column2, outfilename)
+    else:
+        print("已退出")
